@@ -10,7 +10,9 @@ export default defineNuxtConfig({
                 'Open Sans': [400, 700],
                 Montserrat: true,
             }
-        }],
+        },
+            'radix-vue/nuxt',
+        ]
     ]
 
 })
