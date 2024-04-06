@@ -15,6 +15,7 @@
             <img src="public/images/menu.svg">
           </ToolbarButton>
         </ToolbarRoot>
+
       </div>
       <div class="connection">
         <div class="telephone">
@@ -207,7 +208,6 @@ a
   column-gap: 100px
   @media screen and (max-width: 1080px)
     padding-left: 60px
-    //opacity: 1
   @media screen and (max-width: 940px)
     padding-left: 0
     justify-content: space-around

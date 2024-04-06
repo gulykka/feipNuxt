@@ -3,9 +3,9 @@
       class="window"
       @click="$emit('visible')">
   </div>
-  <div class="dialog">
+  <div :class="{hidden_dialog:  !isVisible, dialog: isVisible}">
     <div class="menu_up">
-      <ToolbarRoot>
+      <ToolbarRoot class="close_button">
         <ToolbarButton
             class="close_button"
             @click="$emit('visible')">
@@ -76,15 +76,18 @@ a
   justify-content: space-between
   background: #029F59
   padding: 20px
+  animation-name: show_dialog
+  animation-duration: 2s
 
 .close_button
   padding: 5px
-  width: 32px
   background: #4bb586
+  width: 32px
   height: 32px
   border: none
   border-radius: 5px
   transition: all 1s
+  align-self: flex-end
   &:hover
     opacity: 0.8
 
@@ -117,4 +120,18 @@ a
   column-gap: 8px
   align-items: flex-start
 
+@keyframes show_dialog
+  from
+    width: 0
+  to
+    width: 40%
+@keyframes hidden_dial
+  from
+    width: 40%
+  to
+    width: 0
+
+.hidden_dialog
+  animation-name: hidden_dial
+  animation-duration: 2s
 </style>
