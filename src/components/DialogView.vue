@@ -1,15 +1,15 @@
 <template>
   <div
-      class="window"
-      @click="$emit('visible')">
+      :class="{hidden_window: isHidden, window: !isHidden}"
+      @click="hiddenMenu">
   </div>
-  <div :class="{hidden_dialog:  !isVisible, dialog: isVisible}">
+  <div :class="{hidden_dialog: isHidden, dialog: !isHidden}">
     <div class="menu_up">
       <ToolbarRoot class="close_button">
         <ToolbarButton
             class="close_button"
-            @click="$emit('visible')">
-          <img src="public/images/close_button.svg">
+            @click="hiddenMenu">
+          <img :src="close_button">
         </ToolbarButton>
       </ToolbarRoot>
       <div class="information_links">
@@ -20,15 +20,15 @@
     </div>
     <div class="connection">
       <div class="telephone">
-        <img src="public/images/telephone_white.svg">
+        <img :src="telephone_white">
         <a href="tel">+7 (900) 900-90-90</a>
       </div>
       <div class="email">
-        <img src="public/images/email_white.svg">
+        <img :src='email_white'>
         <a href="mailto:info@gmail.com">info@gmail.com</a>
       </div>
       <div class="location">
-        <img src="public/images/location_white.svg">
+        <img :src="location_white">
         <a>г. Владивосток ул. Выселковая 49, стр. 3</a>
       </div>
     </div>
@@ -37,6 +37,10 @@
 
 <script>
 import {ToolbarButton, ToolbarRoot} from 'radix-vue'
+import email_white from '../assets/images/email_white.svg'
+import close_button from '../assets/images/close_button.svg'
+import location_white from '../assets/images/location_white.svg'
+import telephone_white from '../assets/images/telephone_white.svg'
 
 export default {
   name: "DialogView",
@@ -45,7 +49,19 @@ export default {
   },
   data() {
     return {
-      isVisible: true
+      email_white,
+      telephone_white,
+      location_white,
+      close_button,
+      isVisible: true,
+      isHidden: false,
+    }
+  },
+  methods: {
+    hiddenMenu() {
+      this.isHidden = true
+      setTimeout(() => this.$emit('visible'), 1000)
+
     }
   }
 }
@@ -60,9 +76,31 @@ export default {
   left: 0
   top: 0
   bottom: 0
-  //height: 100vh
   position: fixed
+  animation-name: dark
+  animation-duration: 1s
 
+.hidden_window
+  animation-duration: 1s
+  background: black
+  width: 100%
+  left: 0
+  top: 0
+  bottom: 0
+  position: fixed
+  animation-name: dark_hidden
+
+
+@keyframes dark
+  from
+    opacity: 0
+  to
+    opacity: 0.5
+@keyframes dark_hidden
+  from
+    opacity: 0.5
+  to
+    opacity: 0
 a
   color: white
 .dialog
@@ -77,7 +115,7 @@ a
   background: #029F59
   padding: 20px
   animation-name: show_dialog
-  animation-duration: 2s
+  animation-duration: 1s
 
 .close_button
   padding: 5px
@@ -122,16 +160,28 @@ a
 
 @keyframes show_dialog
   from
-    width: 0
+    transform: translateX(100%)
   to
-    width: 40%
+    transform: translateX(0)
+
 @keyframes hidden_dial
   from
-    width: 40%
+    transform: translateX(0)
   to
-    width: 0
+    transform: translateX(100%)
 
 .hidden_dialog
   animation-name: hidden_dial
-  animation-duration: 2s
+  animation-duration: 1s
+  width: 40%
+  position: fixed
+  right: 0
+  bottom: 0
+  top: 0
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  background: #029F59
+  padding: 20px
+
 </style>

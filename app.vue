@@ -1,10 +1,11 @@
 <template>
   <DialogView
-      v-if="isVisible" @visible="showDialog"></DialogView>
+      v-if="isVisible"
+      @visible="showDialog"></DialogView>
   <div class="container">
     <div class="header">
       <div class="information">
-        <img class="logo" src="public/images/logo.png">
+        <img class="logo" :src="logo">
         <div class="information_links">
           <a>Реализованные проекты</a>
           <a>Новости</a>
@@ -12,14 +13,14 @@
         </div>
         <ToolbarRoot>
           <ToolbarButton class="burger_menu" v-on:click="showDialog">
-            <img src="public/images/menu.svg">
+            <img :src="menu">
           </ToolbarButton>
         </ToolbarRoot>
 
       </div>
       <div class="connection">
         <div class="telephone">
-          <img src="public/images/telephone.svg">
+          <img :src="telephone">
           <a href=»tel>+7 (900) 900-90-90</a>
         </div>
         <ToolbarRoot>
@@ -31,7 +32,7 @@
     </div>
     <div class="footer">
       <div class="footer_top">
-        <img src="public/images/logo_white.png">
+        <img :src="logo_white">
         <div class="navigation">
           <div class="information_links_footer">
             <a>Реализованные проекты</a>
@@ -40,15 +41,15 @@
           </div>
           <div class="connection_footer">
             <div class="telephone">
-              <img src="public/images/telephone.svg">
+              <img :src="telephone">
               <a href="tel">+7 (900) 900-90-90</a>
             </div>
             <div class="email">
-              <img src="public/images/email.svg">
+              <img :src="email">
               <a href="mailto:info@gmail.com">info@gmail.com</a>
             </div>
             <div class="location">
-              <img src="public/images/location.svg">
+              <img :src="location">
               <a>г. Владивосток ул. Выселковая 49, стр. 3</a>
             </div>
           </div>
@@ -70,7 +71,14 @@
 <script>
 import {ToolbarButton, ToolbarRoot} from 'radix-vue'
 import {defineComponent} from "vue";
-import DialogView from "/public/components/DialogView.vue";
+import DialogView from "/src/components/DialogView.vue";
+import logo from './src/assets/images/logo.png';
+import logo_white from './src/assets/images/logo_white.png';
+import email from './src/assets/images/email.svg';
+import location from './src/assets/images/location.svg';
+import telephone from './src/assets/images/telephone.svg'
+import menu from './src/assets/images/menu.svg'
+
 
 export default defineComponent({
   components: {
@@ -80,6 +88,12 @@ export default defineComponent({
   },
   data() {
     return {
+      logo,
+      logo_white,
+      telephone,
+      menu,
+      location,
+      email,
       isVisible: false
     }
   },
@@ -90,10 +104,13 @@ export default defineComponent({
   }
 })
 
-console.log("Hello World")
 </script>
 
 <style scoped lang="sass">
+
+@mixin responsive_layout($width)
+  @media screen and ( max-width: $width)
+    display: none
 
 $shadow: 1px 1px 6px black
 
@@ -111,6 +128,7 @@ a
 
 .container
   @extend %sample_container
+  width: 100%
   height: 100%
 
   .header
@@ -123,8 +141,6 @@ a
     color: #666666
     font-size: 16px
 
-
-
 .information
   display: flex
   align-items: center
@@ -136,12 +152,11 @@ a
     padding-left: 30px
     padding-right: 30px
 
-
 .information_links
   display: flex
   column-gap: 24px
-  @media screen and ( max-width: 1080px)
-    display: none
+  @include responsive_layout(1080px)
+
 .burger_menu
   background: #029F59
   color: white
@@ -152,7 +167,6 @@ a
   &:hover
     background: #254741
     border: 2px #029F59 solid
-
   @media screen and ( min-width: 1081px)
     display: none
 
@@ -160,8 +174,7 @@ a
   display: flex
   align-items: center
   column-gap: 24px
-  @media screen and ( max-width: 1080px)
-    display: none
+  @include responsive_layout(1080px)
 
 .telephone, .email
   display: flex
@@ -201,20 +214,22 @@ a
     flex-direction: column
     row-gap: 20px
 
+@mixin footer_bottom_responsive_layout($padding-left: 200px, $width, $column-gap: 100px, $flex-direction: row, $justify-content: flex-start, $row-gap: 0px)
+  @media screen and (max-width: $width)
+    padding-left: $padding-left
+    flex-direction: $flex-direction
+    column-gap: $column-gap
+    row-gap: $row-gap
+    justify-content: $justify-content
+
 .footer_bottom
   display: flex
   color: #acacac
   padding-left: 200px
   column-gap: 100px
-  @media screen and (max-width: 1080px)
-    padding-left: 60px
-  @media screen and (max-width: 940px)
-    padding-left: 0
-    justify-content: space-around
-    column-gap: 0
-  @media screen and (max-width: 680px)
-    flex-direction: column
-    row-gap: 20px
+  @include footer_bottom_responsive_layout(60px, 1080px)
+  @include footer_bottom_responsive_layout(0px, 940px, 0px, row, space-around)
+  @include footer_bottom_responsive_layout(0, 680px, 0px, column, space-around, 20px)
   a
     color: #acacac
   label
@@ -229,11 +244,9 @@ a
   row-gap: 24px
   width: 195px
 
-
 .connection_footer a
   text-decoration: none
   color: white
-
 
 .connection_footer
   display: flex
@@ -241,18 +254,21 @@ a
   row-gap: 24px
   width: 205px
 
+@mixin navigation_responsive_layout($width, $padding-right, $column-gap: 122px, $flex-direction: row, $row-gap: 0)
+  @media screen and (max-width: $width)
+    padding-right: $padding-right
+    column-gap: $column-gap
+    flex-direction: $flex-direction
+    row-gap: $row-gap
+
 .navigation
   display: flex
   column-gap: 122px
   padding-right: 320px
   padding-top: 12px
-  @media screen and (max-width: 1300px)
-    padding-right: 60px
-  @media screen and (max-width: 1080px)
-    column-gap: 20px
-  @media screen and (max-width: 940px)
-    flex-direction: column
-    row-gap: 20px
+  @include navigation_responsive_layout(1300px, 60px)
+  @include navigation_responsive_layout(1080px, 60px, 20px)
+  @include navigation_responsive_layout(940px, 60px, 0, column, 20px)
 
 .button_default
   padding: 16px 40px
@@ -266,8 +282,5 @@ a
   &:hover
     background: #254741
     border: 2px #029F59 solid
-
-
-
 
 </style>
