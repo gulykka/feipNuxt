@@ -17,6 +17,9 @@
         <a>Новости</a>
         <a>Контакты</a>
       </div>
+      <ToolbarRoot>
+        <ToolbarButton class="button_default">Оставить заявку</ToolbarButton>
+      </ToolbarRoot>
     </div>
     <div class="connection">
       <div class="telephone">
@@ -184,4 +187,15 @@ a
   background: #029F59
   padding: 20px
 
+.button_default
+  padding: 16px 40px
+  background: #2B2F34
+  color: white
+  border-radius: 10px
+  border: 2px #029F59 solid
+  transition: all 1s
+  width: 204px
+
+  &:hover
+    background: #254741
 </style>
