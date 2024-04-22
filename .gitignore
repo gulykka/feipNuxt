@@ -22,7 +22,7 @@ node_modules
 *.scss.map
 
 ### Vue ###
-# gitignore template for Vue.js projects
+# gitignore template for Vue.js projects_pictures
 #
 # Recommended template: Node.gitignore
 
