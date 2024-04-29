@@ -1,9 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+// @ts-ignore
 export default defineNuxtConfig({
     devtools: {enabled: false},
     css: [
-            '@/public/globals.sass'
-        ],
+        '@/public/globals.sass'
+    ],
     modules: [
         ['@nuxtjs/google-fonts', {
             families: {
@@ -11,8 +12,9 @@ export default defineNuxtConfig({
                 Montserrat: true,
             }
         },
-            'radix-vue/nuxt',
-        ]
+        ],
+        'radix-vue/nuxt',
+        'nuxt-swiper'
     ]
 
 })

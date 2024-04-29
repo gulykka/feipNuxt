@@ -72,7 +72,7 @@ export default {
 
 <style scoped lang="sass">
 .window
-
+  z-index: 2
   opacity: 0.5
   background: black
   width: 100%
@@ -84,6 +84,7 @@ export default {
   animation-duration: 1s
 
 .hidden_window
+  z-index: 2
   animation-duration: 1s
   background: black
   width: 100%
@@ -107,6 +108,7 @@ export default {
 a
   color: white
 .dialog
+  z-index: 2
   width: 40%
   position: fixed
   right: 0
@@ -174,6 +176,7 @@ a
     transform: translateX(100%)
 
 .hidden_dialog
+  z-index: 2
   animation-name: hidden_dial
   animation-duration: 1s
   width: 40%

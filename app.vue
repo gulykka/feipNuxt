@@ -21,15 +21,19 @@
       <div class="connection">
         <div class="telephone">
           <img :src="telephone">
-          <a href=»tel>+7 (900) 900-90-90</a>
+          <a href="tel">+7 (900) 900-90-90</a>
         </div>
         <ToolbarRoot>
           <ToolbarButton class="button_default">Оставить заявку</ToolbarButton>
         </ToolbarRoot>
       </div>
     </div>
+
     <div class="main_container">
+      <SliderView></SliderView>
+      <AboutUsView></AboutUsView>
     </div>
+
     <div class="footer">
       <div class="footer_top">
         <img :src="logo_white">
@@ -78,13 +82,17 @@ import email from './src/assets/images/email.svg';
 import location from './src/assets/images/location.svg';
 import telephone from './src/assets/images/telephone.svg'
 import menu from './src/assets/images/menu.svg'
+import SliderView from "/src/components/SliderView.vue";
+import AboutUsView from "/src/components/AboutUsView.vue";
 
 
 export default defineComponent({
   components: {
     ToolbarButton,
     ToolbarRoot,
-    DialogView
+    SliderView,
+    DialogView,
+    AboutUsView
   },
   data() {
     return {
@@ -123,8 +131,11 @@ a
 
 .main_container
   flex-grow: 1
-  display: flex
   padding: 60px
+  display: flex
+  flex-direction: column
+  row-gap: 120px
+
 
 .container
   @extend %sample_container
