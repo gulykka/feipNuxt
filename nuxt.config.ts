@@ -14,7 +14,8 @@ export default defineNuxtConfig({
         },
         ],
         'radix-vue/nuxt',
-        'nuxt-swiper'
-    ]
+        'nuxt-swiper',
+
+    ],
 
 })

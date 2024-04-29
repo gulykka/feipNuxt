@@ -52,7 +52,6 @@ img
   height: 24px
 
 .about_us_container
-
   display: grid
   grid-template-columns: 2fr 1fr
   column-gap: 20px

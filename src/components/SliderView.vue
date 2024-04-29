@@ -22,23 +22,25 @@
     </SwiperSlide>
     <SliderControls/>
   </Swiper>
+
 </template>
 
 <script>
-import slide3_l_1x from '../assets/images/sliders/slide_1_landscape_@1.jpg'
-import slide3_l_2x from '../assets/images/sliders/slide_1_landscape_@2.jpg'
-import slide3_p_1x from '../assets/images/sliders/slide_1_portrait_@1.jpg'
-import slide3_p_2x from '../assets/images/sliders/slide_1_portrait_@2x.jpg'
 
-import slide2_l_1x from '../assets/images/sliders/slide_2_landscape_@1.jpg'
-import slide2_l_2x from '../assets/images/sliders/slide_2_landscape_@2.jpg'
-import slide2_p_1x from '../assets/images/sliders/slide_2_portrait_@1.jpg'
-import slide2_p_2x from '../assets/images/sliders/slide_2_portrait_@2.jpg'
+import slide1_l_1x from '../assets/images/sliders/slide_1_landscape_@1.jpg'
+import slide1_l_2x from '../assets/images/sliders/slide_1_landscape_@2.jpg'
+import slide1_p_1x from '../assets/images/sliders/slide_1_portrait_@1.jpg'
+import slide1_p_2x from '../assets/images/sliders/slide_1_portrait_@2.jpg'
 
-import slide1_l_1x from '../assets/images/sliders/slide_3_landscape_@1.jpg'
-import slide1_l_2x from '../assets/images/sliders/slide_3_landscape_@2.jpg'
-import slide1_p_1x from '../assets/images/sliders/slide_3_portrait_@1.jpg'
-import slide1_p_2x from '../assets/images/sliders/slide_3_portrait_@2.jpg'
+import slide3_l_1x from '../assets/images/sliders/slide_2_landscape_@1.jpg'
+import slide3_l_2x from '../assets/images/sliders/slide_2_landscape_@2.jpg'
+import slide3_p_1x from '../assets/images/sliders/slide_2_portrait_@1.jpg'
+import slide3_p_2x from '../assets/images/sliders/slide_2_portrait_@2.jpg'
+
+import slide2_l_1x from '../assets/images/sliders/slide_3_landscape_@1.jpg'
+import slide2_l_2x from '../assets/images/sliders/slide_3_landscape_@2.jpg'
+import slide2_p_1x from '../assets/images/sliders/slide_3_portrait_@1.jpg'
+import slide2_p_2x from '../assets/images/sliders/slide_3_portrait_@2.jpg'
 
 import SliderControls from "./SliderControls.vue";
 
@@ -102,6 +104,7 @@ export default {
 
 .slides
   width: 100%
+  //padding: 60px
 
 img
   border-radius: 30px

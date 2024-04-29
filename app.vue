@@ -30,8 +30,18 @@
     </div>
 
     <div class="main_container">
-      <SliderView></SliderView>
-      <AboutUsView></AboutUsView>
+      <div class="slider">
+          <SliderView></SliderView>
+      </div>
+      <div class="about">
+        <AboutUsView></AboutUsView>
+      </div>
+      <div class="projects">
+        <ProjectsView></ProjectsView>
+      </div>
+      <div class="news">
+        <NewsView></NewsView>
+      </div>
     </div>
 
     <div class="footer">
@@ -84,7 +94,8 @@ import telephone from './src/assets/images/telephone.svg'
 import menu from './src/assets/images/menu.svg'
 import SliderView from "/src/components/SliderView.vue";
 import AboutUsView from "/src/components/AboutUsView.vue";
-
+import ProjectsView from "/src/components/ProjectsView.vue";
+import NewsView from "./src/components/NewsView.vue";
 
 export default defineComponent({
   components: {
@@ -92,7 +103,9 @@ export default defineComponent({
     ToolbarRoot,
     SliderView,
     DialogView,
-    AboutUsView
+    AboutUsView,
+    ProjectsView,
+    NewsView
   },
   data() {
     return {
@@ -117,7 +130,7 @@ export default defineComponent({
 <style scoped lang="sass">
 
 @mixin responsive_layout($width)
-  @media screen and ( max-width: $width)
+  @media screen and (max-width: $width)
     display: none
 
 $shadow: 1px 1px 6px black
@@ -131,7 +144,8 @@ a
 
 .main_container
   flex-grow: 1
-  padding: 60px
+  padding-top: 60px
+  padding-bottom: 60px
   display: flex
   flex-direction: column
   row-gap: 120px
@@ -157,7 +171,7 @@ a
   align-items: center
   justify-content: space-evenly
   column-gap: 30px
-  @media screen and ( max-width: 1080px)
+  @media screen and (max-width: 1080px)
     width: 100%
     justify-content: space-between
     padding-left: 30px
@@ -175,10 +189,12 @@ a
   border: 2px #029F59 solid
   padding: 10px
   transition: all 1s
+
   &:hover
     background: #254741
     border: 2px #029F59 solid
-  @media screen and ( min-width: 1081px)
+
+  @media screen and (min-width: 1081px)
     display: none
 
 .connection
@@ -241,8 +257,10 @@ a
   @include footer_bottom_responsive_layout(60px, 1080px)
   @include footer_bottom_responsive_layout(0px, 940px, 0px, row, space-around)
   @include footer_bottom_responsive_layout(0, 680px, 0px, column, space-around, 20px)
+
   a
     color: #acacac
+
   label
     padding-right: 140px
     @media screen and (max-width: 1300px)
@@ -294,4 +312,10 @@ a
     background: #254741
     border: 2px #029F59 solid
 
+.slider, .about, .projects, .news
+  padding-left: 60px
+  padding-right: 60px
+.projects
+  background: #F5F7F3
+  padding-top: 80px
 </style>

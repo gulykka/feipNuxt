@@ -1,5 +1,4 @@
 <template>
-  <div class="navigation">
     <ButtonGreen @click="swiper.slidePrev()" class="prev"><img :src="arrow" alt="Дальше"></ButtonGreen>
     <div class="pagination">
       <ButtonCircle
@@ -12,7 +11,6 @@
       </ButtonCircle>
     </div>
     <ButtonGreen @click="swiper.slideNext()" class="next"><img :src="arrow" alt="Дальше"></ButtonGreen>
-  </div>
 
 </template>
 
@@ -43,7 +41,7 @@ export default {
 <style scoped lang="sass">
 .navigation
   position: absolute
-  z-index: 1
+  z-index: 0
   display: flex
   justify-content: space-between
   top: 0
@@ -54,16 +52,33 @@ export default {
   align-self: flex-end
   margin-bottom: 20px
   display: flex
+  position: absolute
+  z-index: 1
+  bottom: 0
+  right: 50%
   column-gap: 16px
-.next, .prev
+.next
   align-self: center
   margin: 20px
+  position: absolute
+  z-index: 1
+  right: 0
+  top: 40%
   width: 48px
   height: 48px
 .prev
   rotate: 180deg
+  left: 0
+  align-self: center
+  margin: 20px
+  position: absolute
+  z-index: 1
+  top: 40%
+  width: 48px
+  height: 48px
 @media screen and (max-width: 767px)
   .prev, .next, .pagination
     display: none
+
 
 </style>
