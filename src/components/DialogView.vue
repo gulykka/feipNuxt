@@ -14,8 +14,16 @@
       </ToolbarRoot>
       <div class="information_links">
         <a>Реализованные проекты</a>
-        <a>Новости</a>
-        <a>Контакты</a>
+        <NuxtLink
+            to='/news'
+            class="link"
+            @click="hiddenMenu"
+        >Новости</NuxtLink>
+        <NuxtLink
+            to='/about'
+            class="link"
+            @click="hiddenMenu"
+        >Контакты</NuxtLink>
       </div>
       <ToolbarRoot>
         <ToolbarButton class="button_default">Оставить заявку</ToolbarButton>
@@ -146,7 +154,6 @@ a
   row-gap: 20px
 
 
-
 .connection
   display: flex
   flex-direction: column
@@ -201,4 +208,6 @@ a
 
   &:hover
     background: #254741
+  .link
+
 </style>

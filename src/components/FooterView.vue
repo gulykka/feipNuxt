@@ -4,10 +4,10 @@
       <img :src="logo_white" class="logo">
       <div class="navigation">
           <a style="grid-area: project">Реализованные проекты</a>
-          <a style="grid-area: news">Новости</a>
-          <a style="grid-area: contacts">Контакты</a>
+          <NuxtLink to='/news' class="link" style="grid-area: news">Новости</NuxtLink>
+          <NuxtLink to="/about" class="link" style="grid-area: contacts">Контакты</NuxtLink>
           <div class="telephone">
-            <img :src="telephone">
+            <img :src="telephone" alt="">
             <a href="tel">+7 (900) 900-90-90</a>
           </div>
           <div class="email">
@@ -35,10 +35,12 @@ import logo_white from '/src/assets/images/logo_white.png';
 import email from '/src/assets/images/email.svg';
 import location from '/src/assets/images/location.svg';
 import telephone from '/src/assets/images/telephone.svg'
+import GreenBorderButton from "/src/components/GreenBorderButton.vue";
 
 export default {
   name: "FooterView",
   components: {
+    GreenBorderButton,
     ButtonGreen,
   },
   data() {
@@ -142,5 +144,6 @@ export default {
     grid-template-columns: 1fr
     grid-template-areas: 'b1' 'b2' 'b3'
     grid-row-gap: 0
-
+.link
+  color: white
 </style>

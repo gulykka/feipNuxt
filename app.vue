@@ -10,11 +10,11 @@
   <div class="container">
     <div class="header">
       <div class="information">
-        <img class="logo" :src="logo">
+        <NuxtLink to="/"><img class="logo" :src="logo"></NuxtLink>
         <div class="information_links">
-          <a>Реализованные проекты</a>
-          <a>Новости</a>
-          <a>Контакты</a>
+          <a class="link">Реализованные проекты</a>
+          <NuxtLink to='/news' class="link" active-class="active_link">Новости</NuxtLink>
+          <NuxtLink to='/about' class="link" active-class="active_link">Контакты</NuxtLink>
         </div>
         <ToolbarRoot>
           <ToolbarButton class="burger_menu" v-on:click="showDialog">
@@ -25,7 +25,7 @@
       </div>
       <div class="connection">
         <div class="telephone">
-          <img :src="telephone">
+          <img :src="telephone" alt="">
           <a href="tel">+7 (900) 900-90-90</a>
         </div>
         <ToolbarRoot>
@@ -35,18 +35,7 @@
     </div>
 
     <div class="main_container">
-      <div class="slider">
-          <SliderView></SliderView>
-      </div>
-      <div class="about">
-        <AboutUsView></AboutUsView>
-      </div>
-      <div class="projects">
-        <ProjectsView></ProjectsView>
-      </div>
-      <div class="news">
-        <NewsView></NewsView>
-      </div>
+      <NuxtPage/>
     </div>
     <div class="footer">
       <FooterView @visible="showWindow"></FooterView>
@@ -103,6 +92,9 @@ export default defineComponent({
     showWindow() {
       this.isVisibleWindow = !this.isVisibleWindow
     }
+  },
+  mounted() {
+
   }
 })
 
@@ -125,11 +117,6 @@ a
 
 .main_container
   flex-grow: 1
-  padding-top: 60px
-  padding-bottom: 60px
-  display: flex
-  flex-direction: column
-  row-gap: 120px
 
 
 .container
@@ -230,10 +217,15 @@ a
     background: #254741
     border: 2px #029F59 solid
 
-.slider, .about, .projects, .news
-  padding-left: 60px
-  padding-right: 60px
-.projects
-  background: #F5F7F3
-  padding-top: 80px
+.link
+  color: #666666
+  transition: all 1s
+
+.active_link
+  color: #029F59
+
+.link:hover
+  color: #254741
+
+
 </style>
