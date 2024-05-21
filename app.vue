@@ -14,7 +14,7 @@
         <div class="information_links">
           <a class="link">Реализованные проекты</a>
           <NuxtLink to='/news' class="link" active-class="active_link">Новости</NuxtLink>
-          <NuxtLink to='/about' class="link" active-class="active_link">Контакты</NuxtLink>
+          <NuxtLink to='/contacts' class="link" active-class="active_link">Контакты</NuxtLink>
         </div>
         <ToolbarRoot>
           <ToolbarButton class="burger_menu" v-on:click="showDialog">
@@ -26,7 +26,7 @@
       <div class="connection">
         <div class="telephone">
           <img :src="telephone" alt="">
-          <a href="tel">+7 (900) 900-90-90</a>
+          <a :href="`tel:${mockContacts.phone.value}`">{{ mockContacts.phone.label }}</a>
         </div>
         <ToolbarRoot>
           <ToolbarButton class="button_default" v-on:click="showWindow">Оставить заявку</ToolbarButton>
@@ -60,6 +60,8 @@ import AboutUsView from "/src/components/AboutUsView.vue";
 import ProjectsView from "/src/components/ProjectsView.vue";
 import NewsView from "./src/components/NewsView.vue";
 import FooterView from "/src/components/FooterView.vue";
+import {mockContacts} from "/src/mock/contacts.js";
+
 
 export default defineComponent({
   components: {
@@ -79,6 +81,7 @@ export default defineComponent({
       logo_white,
       telephone,
       menu,
+      mockContacts,
       location,
       email,
       isVisible: false,
@@ -117,6 +120,7 @@ a
 
 .main_container
   flex-grow: 1
+  padding: 80px 60px 80px 60px
 
 
 .container

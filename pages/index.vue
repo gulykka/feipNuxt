@@ -36,7 +36,6 @@ export default {
   background: #F5F7F3
   padding-top: 80px
 .main_container
-  padding-top: 60px
   padding-bottom: 60px
   display: flex
   flex-direction: column

@@ -1,13 +1,9 @@
 <template>
     <div class="news_container">
-      <div class="links">
-          <NuxtLink to="/" class="link" active-class="active_link">Главная</NuxtLink>
-         /
-          <NuxtLink to="/news" class="link" active-class="active_link">Новости</NuxtLink>
-      </div>
+      <BreadCrumbs :active_link="title_page"></BreadCrumbs>
       <div class="news_container_1">
 
-        <h1 class="title">Новости</h1>
+        <h1 class="title">{{ title_page }}</h1>
         <div class="news">
           <PieceNewsView
               class="item_news"
@@ -34,6 +30,7 @@ import news_3_x2 from '/src/assets/images/news_pictures/news_picture_3@2.jpg'
 import news_4_x1 from '/src/assets/images/news_pictures/news_picture_4.jpg'
 import news_4_x2 from '/src/assets/images/news_pictures/news_picture_4@2.jpg'
 import PaginationView from "/src/components/PaginationView.vue"
+import BreadCrumbs from "/src/components/BreadCrumbs.vue";
 
 
 export default {
@@ -46,11 +43,13 @@ export default {
   components: {
     PaginationView,
     PieceNewsView,
+    BreadCrumbs,
     news_4_x2, news_4_x1, news_3_x2, news_3_x1,
     news_2_x2, news_2_x1, news_1_x2, news_1_x1
   },
   data() {
     return {
+      title_page: 'Новости',
       news: [
         {
           images: {
@@ -426,20 +425,11 @@ export default {
   gap: 16px
   justify-content: space-around
 
-.link
-  color: #666666
-
-.links
-  color: #666666
-  padding-left: 30px
-  font-size: 20px
 .title
   padding-left: 30px
-
-
+  font-size: 46px
 
 .news_container
-  padding: 80px 60px 80px 60px
   font-family: 'Open Sans'
   row-gap: 48px
   display: flex
@@ -449,10 +439,8 @@ export default {
   display: flex
   flex-direction: column
   row-gap: 32px
-.link:hover
-  color: #254741
+
 .pagination
   align-self: center
-.active_link
-  color: #029F59
+
 </style>
