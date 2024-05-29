@@ -15,6 +15,8 @@ export default {
 button
   background: #029F59
   border-radius: 10px
+  color: white
+  font-size: 14px
   transition: all 1s
   border: 2px #029F59 solid
   &:hover

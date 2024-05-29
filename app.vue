@@ -1,12 +1,14 @@
 <template>
   <DialogView
       v-if="isVisible"
-      @visible="showDialog">
+      @visible="showDialog"
+      @show="showWindow">
   </DialogView>
-  <WindowView
+
+  <FormWindow
       v-if="isVisibleWindow"
       @visible="showWindow">
-  </WindowView>
+  </FormWindow>
   <div class="container">
     <div class="header">
       <div class="information">
@@ -46,6 +48,7 @@
 
 <script>
 import {ToolbarButton, ToolbarRoot} from 'radix-vue'
+import FormWindow from "/src/components/FormWindow.vue";
 import {defineComponent} from "vue";
 import DialogView from "/src/components/DialogView.vue";
 import logo from './src/assets/images/logo.png';
@@ -71,6 +74,7 @@ export default defineComponent({
     SliderView,
     DialogView,
     AboutUsView,
+    FormWindow,
     ProjectsView,
     WindowView,
     NewsView
@@ -93,6 +97,7 @@ export default defineComponent({
       this.isVisible = !this.isVisible
     },
     showWindow() {
+      this.isVisible = false
       this.isVisibleWindow = !this.isVisibleWindow
     }
   },
