@@ -26,7 +26,7 @@
         >Контакты</NuxtLink>
       </div>
       <ToolbarRoot>
-        <ToolbarButton class="button_default">Оставить заявку</ToolbarButton>
+        <ToolbarButton class="button_default" @click="openWindow">Оставить заявку</ToolbarButton>
       </ToolbarRoot>
     </div>
     <div class="connection">
@@ -73,6 +73,9 @@ export default {
       this.isHidden = true
       setTimeout(() => this.$emit('visible'), 1000)
 
+    },
+    openWindow() {
+      this.$emit('show')
     }
   }
 }
