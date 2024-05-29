@@ -3,21 +3,10 @@
     <div class="footer_top">
       <img :src="logo_white" class="logo">
       <div class="navigation">
-          <a style="grid-area: project">Реализованные проекты</a>
-          <a style="grid-area: news">Новости</a>
-          <a style="grid-area: contacts">Контакты</a>
-          <div class="telephone">
-            <img :src="telephone">
-            <a href="tel">+7 (900) 900-90-90</a>
-          </div>
-          <div class="email">
-            <img :src="email">
-            <a href="mailto:info@gmail.com">info@gmail.com</a>
-          </div>
-          <div class="location">
-            <img :src="location">
-            <a>г. Владивосток ул. Выселковая 49, стр. 3</a>
-          </div>
+        <a style="grid-area: project">Реализованные проекты</a>
+        <NuxtLink to='/news' class="link" style="grid-area: news">Новости</NuxtLink>
+        <NuxtLink to="/contacts" class="link" style="grid-area: contacts">Контакты</NuxtLink>
+        <ContactsView style="grid-area: contacts_view"></ContactsView>
       </div>
       <ButtonGreen class="add" v-on:click="hiddenWindow">Оставить заявку</ButtonGreen>
     </div>
@@ -35,11 +24,15 @@ import logo_white from '/src/assets/images/logo_white.png';
 import email from '/src/assets/images/email.svg';
 import location from '/src/assets/images/location.svg';
 import telephone from '/src/assets/images/telephone.svg'
+import GreenBorderButton from "/src/components/GreenBorderButton.vue";
+import ContactsView from "/src/components/ContactsView.vue";
 
 export default {
   name: "FooterView",
   components: {
+    GreenBorderButton,
     ButtonGreen,
+    ContactsView
   },
   data() {
     return {
@@ -88,8 +81,10 @@ export default {
   @media screen and (max-width: 600px)
     grid-template-columns: 30px 1fr
     grid-template-areas: '. footer_top' '. footer_bottom'
+
 .footer_bottom
   grid-area: footer_bottom
+
 .footer_top
   grid-area: footer_top
   display: grid
@@ -102,30 +97,36 @@ export default {
     grid-template-rows: 1fr 3fr 1fr
     grid-template-areas: 'logo' 'navigation' 'add_'
     grid-row-gap: 20px
+
 .logo
   grid-area: logo
+
 .add
   grid-area: add_
   width: 204px
   height: 49px
+
 .telephone
   grid-area: telephone
+
 .location
   grid-area: location
+
 .email
   grid-area: email
+
 .navigation
   grid-area: navigation
   display: grid
   height: 105px
   grid-template-rows: 1fr 1fr 1fr
   grid-template-columns: 1fr 30px 1fr
-  grid-template-areas: 'project . telephone' 'news . email' 'contacts . location'
+  grid-template-areas: 'project . contacts_view' 'news . contacts_view' 'contacts . contacts_view'
   @media screen and (max-width: 1140px)
     grid-template-columns: 1fr
     grid-template-rows: repeat(6, 1fr)
     grid-row-gap: 20px
-    grid-template-areas: 'project' 'news' 'contacts' 'email'  'telephone' 'location'
+    grid-template-areas: 'project' 'news' 'contacts' 'contacts_view'  'contacts_view' 'contacts_view'
     height: 250px
 
 .footer_bottom
@@ -143,4 +144,6 @@ export default {
     grid-template-areas: 'b1' 'b2' 'b3'
     grid-row-gap: 0
 
+.link
+  color: white
 </style>

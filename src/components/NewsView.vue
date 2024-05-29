@@ -2,7 +2,7 @@
   <div class="news_container">
     <div class="news_navigation">
       <h1>Новости</h1>
-      <GreenBorderButton>Все новости</GreenBorderButton>
+      <GreenBorderButton><NuxtLink class="link" to="/news">Все новости</NuxtLink></GreenBorderButton>
     </div>
     <div class="news">
       <PieceNewsView
@@ -116,7 +116,6 @@ h1
   flex-direction: column
   row-gap: 32px
 
-
 .news
   display: flex
   column-gap: 16px
@@ -129,6 +128,7 @@ h1
 .news_navigation
   display: flex
   justify-content: space-between
-
+.link
+  color: #029F59
 
 </style>

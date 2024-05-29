@@ -10,11 +10,11 @@
   <div class="container">
     <div class="header">
       <div class="information">
-        <img class="logo" :src="logo">
+        <NuxtLink to="/"><img class="logo" :src="logo"></NuxtLink>
         <div class="information_links">
-          <a>Реализованные проекты</a>
-          <a>Новости</a>
-          <a>Контакты</a>
+          <a class="link">Реализованные проекты</a>
+          <NuxtLink to='/news' class="link" active-class="active_link">Новости</NuxtLink>
+          <NuxtLink to='/contacts' class="link" active-class="active_link">Контакты</NuxtLink>
         </div>
         <ToolbarRoot>
           <ToolbarButton class="burger_menu" v-on:click="showDialog">
@@ -25,8 +25,8 @@
       </div>
       <div class="connection">
         <div class="telephone">
-          <img :src="telephone">
-          <a href="tel">+7 (900) 900-90-90</a>
+          <img :src="telephone" alt="">
+          <a :href="`tel:${mockContacts.phone.value}`">{{ mockContacts.phone.label }}</a>
         </div>
         <ToolbarRoot>
           <ToolbarButton class="button_default" v-on:click="showWindow">Оставить заявку</ToolbarButton>
@@ -35,18 +35,7 @@
     </div>
 
     <div class="main_container">
-      <div class="slider">
-          <SliderView></SliderView>
-      </div>
-      <div class="about">
-        <AboutUsView></AboutUsView>
-      </div>
-      <div class="projects">
-        <ProjectsView></ProjectsView>
-      </div>
-      <div class="news">
-        <NewsView></NewsView>
-      </div>
+      <NuxtPage/>
     </div>
     <div class="footer">
       <FooterView @visible="showWindow"></FooterView>
@@ -71,6 +60,8 @@ import AboutUsView from "/src/components/AboutUsView.vue";
 import ProjectsView from "/src/components/ProjectsView.vue";
 import NewsView from "./src/components/NewsView.vue";
 import FooterView from "/src/components/FooterView.vue";
+import {mockContacts} from "/src/mock/contacts.js";
+
 
 export default defineComponent({
   components: {
@@ -90,6 +81,7 @@ export default defineComponent({
       logo_white,
       telephone,
       menu,
+      mockContacts,
       location,
       email,
       isVisible: false,
@@ -103,6 +95,9 @@ export default defineComponent({
     showWindow() {
       this.isVisibleWindow = !this.isVisibleWindow
     }
+  },
+  mounted() {
+
   }
 })
 
@@ -125,11 +120,7 @@ a
 
 .main_container
   flex-grow: 1
-  padding-top: 60px
-  padding-bottom: 60px
-  display: flex
-  flex-direction: column
-  row-gap: 120px
+  padding: 80px 60px 80px 60px
 
 
 .container
@@ -230,10 +221,15 @@ a
     background: #254741
     border: 2px #029F59 solid
 
-.slider, .about, .projects, .news
-  padding-left: 60px
-  padding-right: 60px
-.projects
-  background: #F5F7F3
-  padding-top: 80px
+.link
+  color: #666666
+  transition: all 1s
+
+.active_link
+  color: #029F59
+
+.link:hover
+  color: #254741
+
+
 </style>
